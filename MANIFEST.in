@@ -1,0 +1,11 @@
+include .env.example
+include .gitattributes
+include .gitignore
+include README.md LICENSE THIRD_PARTY_NOTICES.md CONTRIBUTING.md SECURITY.md
+include Install.sh install.bat
+recursive-include mediadhob *.py *.tcss *.ttf *.otf *-OFL.txt
+recursive-include tests *.py
+prune downloaded_media
+prune .venv
+prune .kiro
+global-exclude .env .env.local .env.production cookies* ig_session*.json *.log *.py[cod]

@@ -1,0 +1,44 @@
+[build-system]
+requires      = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+# ─── Project metadata ─────────────────────────────────────────────────────────
+[project]
+name        = "mediadhob"
+version     = "0.2.0"
+description = "Advanced Media Downloader for Instagram & YouTube — TUI tool"
+readme      = "README.md"
+license     = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+authors     = [{ name = "Abubaker Khalid" }]
+requires-python = ">=3.11"
+
+# ─── Runtime dependencies ─────────────────────────────────────────────────────
+dependencies = [
+    "yt-dlp>=2025.1.1",
+    "rich>=14.2.0",
+    "textual>=3.0.0",
+    "instagrapi>=2.4.0",
+    "requests>=2.32.5",
+    "python-dotenv>=1.2.1",
+]
+
+[project.optional-dependencies]
+captions = ["faster-whisper>=1.1.0"]
+dev = ["build>=1.2"]
+
+[project.scripts]
+mediadhob = "mediadhob.tui:run"
+mediadhob-classic = "mediadhob.main:main"
+
+# ─── Package discovery ────────────────────────────────────────────────────────
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mediadhob*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+mediadhob = ["*.tcss", "fonts/*.ttf", "fonts/*.otf", "fonts/*-OFL.txt"]
